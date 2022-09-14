@@ -30,12 +30,10 @@ jobs:
       - name: Init go
         run: go mod init .storybook
 
-      - name: Run go - .storybook/main.go
-        if: ${{ steps.filter.outputs.go1 == 'true' }}
+      - name: Run go #- .storybook/main.go
+        if: ${{ steps.filter.outputs.go1 == 'true' || steps.filter.outputs.go2 == 'true' }}
         run: go run .storybook/main.go
 
-#---------
-
-      - name: Run go - src/stories/main.go
-        if: ${{ steps.filter.outputs.go2 == 'true' }}
-        run: go run src/stories/main.go
+      # - name: Run go - src/stories/main.go
+      #   if: ${{ steps.filter.outputs.go2 == 'true' }}
+      #   run: go run src/stories/main.go
