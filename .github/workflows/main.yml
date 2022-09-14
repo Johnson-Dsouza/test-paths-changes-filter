@@ -16,5 +16,5 @@ jobs:
       - name: Display Go version
         run: go version
 
-      - name: Run build
-        run: go mod init && go build . 
+      - name: Init
+        run: go mod init .storybook && src/stories
