@@ -3,6 +3,7 @@ on:
   push:
     paths:
       - ".storybook/**"
+      - "src/stories/**"
 
 jobs:
   build:
