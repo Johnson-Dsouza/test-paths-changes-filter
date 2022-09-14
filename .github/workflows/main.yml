@@ -16,6 +16,9 @@ jobs:
       - name: Install dependencies
         run: go get .
       
+      - name: Init Go
+        run: go mod init .
+
       - name: Build
         run: go build -v .storybook/main.go
       
