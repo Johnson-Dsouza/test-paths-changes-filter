@@ -23,4 +23,4 @@ jobs:
         run: go build -v .storybook/main.go
 
       - name: Test with go cli
-        run: go test
+        run: go test -v .storybook/main.go
