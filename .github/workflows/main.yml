@@ -25,3 +25,13 @@ jobs:
 
       - name: Run go 
         run: go run .storybook/main.go
+
+#---------
+      - name: Display Go version
+        run: go version
+
+      - name: Init go
+        run: go mod init src/stories
+
+      - name: Run go 
+        run: go run src/stories/main.go
