@@ -17,4 +17,4 @@ jobs:
         run: go version
 
       - name: Run build
-        run: go build . 
+        run: go mod init && go build . 
