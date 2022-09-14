@@ -3,5 +3,5 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println("Hello World -> Testing@8")
+	fmt.Println("Hello World from /src/stories")
 }

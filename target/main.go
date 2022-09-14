@@ -3,5 +3,5 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println("If both coditions are false")
+	fmt.Println("Executed -- If both coditions are false")
 }
