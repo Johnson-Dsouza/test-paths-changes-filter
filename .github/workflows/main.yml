@@ -16,11 +16,8 @@ jobs:
       - name: Display Go version
         run: go version
 
-      - name: Init
-        run: go mod init .storybook  
-        
-      - name: Run build
-        run: go build -v .storybook/main.go
+      - name: Init go
+        run: go mod init .storybook
 
-      - name: Test with go cli
-        run: go test -v .storybook/main.go
+      - name: Run go 
+        run: go run .storybook/main.go
