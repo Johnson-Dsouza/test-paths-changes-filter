@@ -1,9 +1,6 @@
 name: Go
 on: 
-  push:
-    paths:
-      - ".storybook/**"
-      - "src/stories/**"
+  push
 
 jobs:
   build:
@@ -11,6 +8,16 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+
+      - name: checks condition
+        uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters:  |
+            go1:
+              - '.storybook/**'
+            go2: 
+              - 'src/stories/**'
       
       - name: Setup Go
         uses: actions/setup-go@v3
@@ -24,9 +31,11 @@ jobs:
         run: go mod init .storybook
 
       - name: Run go - .storybook/main.go
+        if: ${{ steps.filter.outputs.go == 'true' }}
         run: go run .storybook/main.go
 
 #---------
 
       - name: Run go - src/stories/main.go
+        if: ${{ steps.filter.outputs.go2 == 'true' }}
         run: go run src/stories/main.go
