@@ -1,58 +1,42 @@
-name: Deploy Backend Service into Duplo EKS cluster
-on:
-  workflow_dispatch:
-    inputs:
-      environment:
-        description: 'The environment to deploy to. Eg: sandbox, uat, production'
-        required: true
-        default: 'sandbox'
-      service:
-        description: 'The backend service to deploy.'
-        required: true
-        default: 'backend'
-      ref:
-        description: 'Which ref to deploy'
-        required: true
+name: Go
+on: 
+  push
 
-# name: Go
-# on: 
-#   push
+jobs:
+  build:
+    runs-on: ubuntu-latest
 
-# jobs:
-#   build:
-#     runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
 
-#     steps:
-#       - uses: actions/checkout@v3
-
-#       - name: checks condition
-#         uses: dorny/paths-filter@v2
-#         id: filter
-#         with:
-#           filters:  |
-#             go1:
-#               - '.storybook/**'
-#             go2: 
-#               - 'src/stories/**'
+      - name: checks condition
+        uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters:  |
+            go1:
+              - '.storybook/**'
+            go2: 
+              - 'src/stories/**'
       
-#       - name: Setup Go
-#         uses: actions/setup-go@v3
-#         with:
-#           go-version: '1.16.x'
+      - name: Setup Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: '1.16.x'
       
-#       - name: Display Go version
-#         run: go version
+      - name: Display Go version
+        run: go version
 
-#       - name: Init go
-#         run: go mod init .storybook
+      - name: Init go
+        run: go mod init .storybook
 
-#       - name: Run .storybook/main.go
-#         if: ${{ steps.filter.outputs.go1 == 'true' || steps.filter.outputs.go2 == 'true' }}
-#         run: go run .storybook/main.go
+      - name: Run .storybook/main.go
+        if: ${{ steps.filter.outputs.go1 == 'true' || steps.filter.outputs.go2 == 'true' }}
+        run: go run .storybook/main.go
 
-#       - name: Run src/stories/main.go
-#         if: ${{ steps.filter.outputs.go1 == 'true' || steps.filter.outputs.go2 == 'true' }}
-#         run: go run src/stories/main.go
+      - name: Run src/stories/main.go
+        if: ${{ steps.filter.outputs.go1 == 'true' || steps.filter.outputs.go2 == 'true' }}
+        run: go run src/stories/main.go
 
-#       - name: Run target
-#         run: go run target/main.go
+      - name: Run target
+        run: go run target/main.go
