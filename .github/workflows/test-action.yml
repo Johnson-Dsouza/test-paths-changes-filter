@@ -1,0 +1,16 @@
+name: Deploy Backend Service into Duplo EKS cluster
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'The environment to deploy to. Eg: sandbox, uat, production'
+        required: true
+        default: 'sandbox'
+      service:
+        description: 'The backend service to deploy.'
+        required: true
+        default: 'backend'
+      ref:
+        description: 'Which ref to deploy'
+        required: true
