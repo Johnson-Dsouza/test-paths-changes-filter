@@ -8,13 +8,12 @@ on:
         required: true
         default: 'sandbox'
       service:
-        description: 'The service to deploy. Eg: backend, internal'
+        description: 'The internal service to deploy.'
         required: true
-        default: 'internal'
+        default: 'backend'
       ref:
         description: 'Which ref to deploy'
         required: true
-
 
 # name: Go
 # on: 
