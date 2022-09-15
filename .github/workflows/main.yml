@@ -1,5 +1,4 @@
 name: Deploy Backend Service into Duplo EKS cluster
-
 on:
   workflow_dispatch:
     inputs:
