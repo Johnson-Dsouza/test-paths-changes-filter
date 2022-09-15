@@ -8,7 +8,7 @@ on:
         required: true
         default: 'sandbox'
       service:
-        description: 'The internal service to deploy.'
+        description: 'The backend service to deploy.'
         required: true
         default: 'backend'
       ref:
